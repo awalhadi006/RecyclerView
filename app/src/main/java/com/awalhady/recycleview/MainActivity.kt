@@ -1,11 +1,13 @@
 package com.awalhady.recycleview
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
 import android.widget.ImageView
-import android.widget.TextClock
 import android.widget.TextView
 import com.awalhady.recycleview.adapter.AdapterTeamBola
 import com.awalhady.recycleview.databinding.ActivityMainBinding
@@ -55,4 +57,24 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        setMode(item.itemId)
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setMode(selectedMode: Int) {
+        when (selectedMode) {
+            R.id.myprofile -> {
+                val intent = Intent(this, Profile::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
 }
